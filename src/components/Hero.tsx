@@ -31,7 +31,10 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
             <p className="text-xl md:text-2xl lg:text-3xl text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-medium">
-              Front-End Developer <span className="mx-3 text-neutral-300 dark:text-neutral-700 hidden sm:inline-block">|</span><br className="sm:hidden" /> React Specialist
+              React / Next.js Front-End Developer
+            </p>
+            <p className="text-sm md:text-md lg:text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto lg:mx-0 font-medium">
+              I build responsive, modern, and user-friendly web applications using React.js, Next.js, JavaScript, Tailwind CSS, and REST APIs.
             </p>
           </motion.div>
 

@@ -21,12 +21,12 @@ export function Contact() {
             <div className="w-20 h-20 bg-white dark:bg-neutral-900 text-green-600 dark:text-green-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm border border-neutral-100 dark:border-neutral-800">
               <MessageCircle size={32} />
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-6 tracking-tight">Let's Work Together</h2>
             <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-              Currently available for freelance opportunities and full-time roles. If you have a project that needs some creative touch, I'd love to hear about it.
+              Currently available for freelance opportunities, internships, and junior front-end roles. Feel free to contact me if you have a project or opportunity.
             </p>
-            
+
             <a
               href="https://wa.me/201204995735"
               target="_blank"

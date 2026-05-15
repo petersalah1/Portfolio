@@ -5,18 +5,19 @@ import { Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    role: "Senior Front-End Developer",
-    company: "Tech Solutions Inc.",
-    period: "2021 - Present",
-    description: "Leading the front-end team in building high-performance React and Next.js applications. Responsible for architectural decisions, state management, and mentoring junior developers.",
+    role: "Freelance Front-End Developer",
+    company: "Freelance / Client Projects",
+    period: "2025 - Present",
+    description: "Built responsive websites and web applications for real clients, including an educational platform and a tourism website. Worked on modern UI, API integration, dynamic pages, and Arabic RTL interfaces using React, Next.js, JavaScript, and Tailwind CSS.",
   },
   {
-    role: "Front-End Developer",
-    company: "Digital Agency",
-    period: "2018 - 2021",
-    description: "Developed responsive and interactive UI components. Integrated RESTful APIs and collaborated with designers to implement pixel-perfect web experiences.",
+    role: "Front-End Learning & Practice",
+    company: "Personal Projects",
+    period: "2025",
+    description: "Focused on building real-world projects using Next.js, React.js, REST APIs, Axios, React Query, component-based architecture, and responsive design.",
   },
 ];
+
 
 export function Experience() {
   return (
