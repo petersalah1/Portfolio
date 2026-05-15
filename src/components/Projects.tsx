@@ -7,20 +7,47 @@ import { FaGithub } from "react-icons/fa";
 
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "A high-performance modern web shop focusing on seamless user experience, lightning-fast loads, and complex state management using Redux and React Query.",
-    image: "bg-gradient-to-br from-blue-600 to-cyan-400",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Redux"],
-    demoLink: "#",
-    githubLink: "#",
+    title: "Ahmed Megaly Educational Platform",
+    description:
+      "A modern Arabic RTL educational platform for managing courses, lessons, revisions, exams, subscriptions, store, cart, checkout, and protected video learning flows with backend API integration.",
+    image: "bg-gradient-to-br from-indigo-700 to-blue-500",
+    tags: [
+      "Next.js",
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "React Query",
+      "Axios",
+      "RTL",
+    ],
+    demoLink: "https://ahmedmegaly.sck.guru/",
+    githubLink: "",
   },
   {
-    title: "Social Media Application",
-    description: "A real-time interaction platform showcasing complex UI components, highly interactive features, and efficient REST API integration.",
-    image: "bg-gradient-to-br from-indigo-500 to-purple-600",
-    tags: ["React.js", "Next.js", "Axios", "Tailwind CSS", "TypeScript", "Redux"],
-    demoLink: "#",
-    githubLink: "#",
+    title: "NextShop E-commerce Platform",
+    description:
+      "A responsive e-commerce web application with dynamic products, categories, brands, product details, sorting, pagination, discount display, image gallery, and guest cart functionality using LocalStorage.",
+    image: "bg-gradient-to-br from-blue-600 to-cyan-400",
+    tags: [
+      "Next.js",
+      "React",
+      "JavaScript",
+      "Tailwind CSS",
+      "React Query",
+      "Axios",
+      "Context API",
+    ],
+    demoLink: "https://next-shop-kappa-wine.vercel.app/",
+    githubLink: "https://github.com/petersalah1/nextShop",
+  },
+  {
+    title: "Nivirra Tourism Website",
+    description:
+      "A responsive tourism website built with HTML, CSS, and Vanilla JavaScript, featuring trips, offers, traveler feedback, map section, and an interactive tailor-made tour flow for customized travel requests.",
+    image: "bg-gradient-to-br from-orange-500 to-yellow-400",
+    tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    demoLink: "https://petersalah1.github.io/Nivirra/index.html",
+    githubLink: "",
   },
 ];
 
