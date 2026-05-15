@@ -10,7 +10,8 @@ const projects = [
     title: "Ahmed Megaly Educational Platform",
     description:
       "A modern Arabic RTL educational platform for managing courses, lessons, revisions, exams, subscriptions, store, cart, checkout, and protected video learning flows with backend API integration.",
-    image: "bg-gradient-to-br from-indigo-700 to-blue-500",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fahmedmegaly.sck.guru%2F&screenshot=true&meta=false&embed=screenshot.url",
+    fallbackGradient: "from-indigo-700 to-blue-500",
     tags: [
       "Next.js",
       "React",
@@ -27,7 +28,8 @@ const projects = [
     title: "NextShop E-commerce Platform",
     description:
       "A responsive e-commerce web application with dynamic products, categories, brands, product details, sorting, pagination, discount display, image gallery, and guest cart functionality using LocalStorage.",
-    image: "bg-gradient-to-br from-blue-600 to-cyan-400",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fnext-shop-kappa-wine.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
+    fallbackGradient: "from-blue-600 to-cyan-400",
     tags: [
       "Next.js",
       "React",
@@ -44,7 +46,8 @@ const projects = [
     title: "Nivirra Tourism Website",
     description:
       "A responsive tourism website built with HTML, CSS, and Vanilla JavaScript, featuring trips, offers, traveler feedback, map section, and an interactive tailor-made tour flow for customized travel requests.",
-    image: "bg-gradient-to-br from-orange-500 to-yellow-400",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fpetersalah1.github.io%2FNivirra%2Findex.html&screenshot=true&meta=false&embed=screenshot.url",
+    fallbackGradient: "from-orange-500 to-yellow-400",
     tags: ["HTML", "CSS", "JavaScript", "Responsive Design"],
     demoLink: "https://petersalah1.github.io/Nivirra/index.html",
     githubLink: "",
@@ -79,8 +82,14 @@ export function Projects() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group rounded-[2rem] overflow-hidden bg-white dark:bg-[#020617] border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 flex flex-col"
             >
-              <div className={`w-full h-72 ${project.image} relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+              <div className={`w-full h-72 bg-gradient-to-br ${project.fallbackGradient} relative overflow-hidden`}>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
                 <div className="absolute inset-0 flex items-center justify-center translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   <span className="bg-white/90 dark:bg-neutral-900/90 text-neutral-900 dark:text-white text-sm font-semibold py-3 px-6 rounded-full backdrop-blur-md shadow-lg">
                     View Project Details
@@ -110,17 +119,23 @@ export function Projects() {
                 <div className="flex items-center space-x-4">
                   <Link 
                     href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 inline-flex justify-center items-center py-4 px-6 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
                   >
                     Live Demo
                     <ExternalLink size={18} className="ml-2" />
                   </Link>
-                  <Link 
-                    href={project.githubLink}
-                    className="p-4 border border-neutral-200 dark:border-neutral-700 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
-                  >
-                    <FaGithub size={24} />
-                  </Link>
+                  {project.githubLink && (
+                    <Link 
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 border border-neutral-200 dark:border-neutral-700 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
+                    >
+                      <FaGithub size={24} />
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>
