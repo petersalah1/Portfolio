@@ -11,21 +11,24 @@ export function Footer() {
         </div>
         <div className="flex space-x-6">
           <Link
-            href="#"
+            href="https://github.com/petersalah1"
+            target="_blank"
             className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
           >
             <FaGithub size={20} />
             <span className="sr-only">GitHub</span>
           </Link>
           <Link
-            href="#"
+            href="https://www.linkedin.com/in/petersalah/"
+            target="_blank"
             className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
           >
             <FaLinkedin size={20} />
             <span className="sr-only">LinkedIn</span>
           </Link>
           <Link
-            href="mailto:#"
+            href="mailto:petersalah104@gmail.com"
+            target="_blank"
             className="text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
           >
             <Mail size={20} />
