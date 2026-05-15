@@ -9,7 +9,7 @@ const projects = [
   {
     title: "Ahmed Megaly Educational Platform",
     description:
-      "A modern Arabic RTL educational platform for managing courses, lessons, revisions, exams, subscriptions, store, cart, checkout, and protected video learning flows with backend API integration.",
+      "A modern Arabic RTL educational platform with courses, lessons, exams, revisions, store, cart, checkout, protected video pages, and backend API integration.",
     image: "https://api.microlink.io/?url=https%3A%2F%2Fahmedmegaly.sck.guru%2F&screenshot=true&meta=false&embed=screenshot.url",
     fallbackGradient: "from-indigo-700 to-blue-500",
     tags: [
@@ -68,7 +68,7 @@ export function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">Featured Projects</h2>
           <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            A selection of my best work, showcasing complex problem solving and modern design.
+            A selection of real and personal projects built with modern front-end technologies.
           </p>
         </motion.div>
 
@@ -96,7 +96,7 @@ export function Projects() {
                   </span>
                 </div>
               </div>
-              
+
               <div className="p-8 md:p-10 flex-1 flex flex-col">
                 <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-4">
                   {project.title}
@@ -104,11 +104,11 @@ export function Projects() {
                 <p className="text-neutral-600 dark:text-neutral-400 mb-8 text-lg leading-relaxed flex-1">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map((tag, tIndex) => (
-                    <span 
-                      key={tIndex} 
+                    <span
+                      key={tIndex}
                       className="px-4 py-1.5 bg-neutral-100 dark:bg-neutral-800/50 text-neutral-700 dark:text-neutral-300 text-sm rounded-full font-medium"
                     >
                       {tag}
@@ -117,7 +117,7 @@ export function Projects() {
                 </div>
 
                 <div className="flex items-center space-x-4">
-                  <Link 
+                  <Link
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -127,7 +127,7 @@ export function Projects() {
                     <ExternalLink size={18} className="ml-2" />
                   </Link>
                   {project.githubLink && (
-                    <Link 
+                    <Link
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"

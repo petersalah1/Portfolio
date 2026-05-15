@@ -16,8 +16,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peter Salah - Front-End Developer",
-  description: "Portfolio website of Peter Salah, Front-End Developer & React Specialist.",
+  title: "Peter Salah - React / Next.js Front-End Developer",
+  description:
+    "Portfolio website of Peter Salah, a React and Next.js Front-End Developer building responsive, modern, and user-friendly web applications.",
+  icons: {
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
