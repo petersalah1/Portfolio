@@ -1,16 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: "Experience", href: "#experience", id: "experience" },
-  { name: "Skills", href: "#skills", id: "skills" },
-  { name: "Projects", href: "#projects", id: "projects" },
-  { name: "Contact", href: "#contact", id: "contact" },
+  { name: "Experience", id: "experience" },
+  { name: "Skills", id: "skills" },
+  { name: "Projects", id: "projects" },
+  { name: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
@@ -23,16 +22,13 @@ export function Navbar() {
       setIsScrolled(window.scrollY > 20);
 
       const scrollPosition = window.scrollY + 140;
-
       let currentSection = "";
 
       navLinks.forEach((link) => {
         const section = document.getElementById(link.id);
-
         if (section) {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.offsetHeight;
-
           if (
             scrollPosition >= sectionTop &&
             scrollPosition < sectionTop + sectionHeight
@@ -46,13 +42,20 @@ export function Navbar() {
     };
 
     handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const closeMobileMenu = () => {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setIsMobileMenuOpen(false);
   };
 
@@ -66,32 +69,30 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center">
-          <Link
-            href="/"
-            onClick={closeMobileMenu}
+          <button
+            onClick={scrollToTop}
             className="text-2xl font-bold tracking-tighter text-neutral-900 dark:text-white"
           >
             P
             <span className="text-blue-600 dark:text-blue-500">S.</span>
-          </Link>
+          </button>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-2">
             {navLinks.map((item) => {
               const isActive = activeSection === item.id;
-
               return (
-                <Link
+                <button
                   key={item.name}
-                  href={item.href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                     isActive
                       ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10"
                       : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-800/60"
                   }`}
                 >
                   {item.name}
-                </Link>
+                </button>
               );
             })}
 
@@ -146,7 +147,7 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                onClick={closeMobileMenu}
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="fixed inset-0 top-[72px] bg-black/10 dark:bg-black/30 backdrop-blur-[2px] md:hidden"
               />
 
@@ -154,41 +155,32 @@ export function Navbar() {
                 initial={{ opacity: 0, y: -10, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.98 }}
-                transition={{
-                  duration: 0.25,
-                  ease: "easeOut",
-                }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
                 className="md:hidden absolute top-full left-4 right-4 mt-4 rounded-3xl bg-white/95 dark:bg-[#020617]/95 border border-neutral-200 dark:border-neutral-800 shadow-2xl backdrop-blur-xl overflow-hidden"
               >
                 <div className="p-3">
                   {navLinks.map((item, index) => {
                     const isActive = activeSection === item.id;
-
                     return (
                       <motion.div
                         key={item.name}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.2,
-                          delay: index * 0.05,
-                        }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
-                        <Link
-                          href={item.href}
-                          onClick={closeMobileMenu}
-                          className={`flex items-center justify-between px-5 py-4 rounded-2xl text-base font-medium transition-all ${
+                        <button
+                          onClick={() => scrollToSection(item.id)}
+                          className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-base font-medium transition-all cursor-pointer ${
                             isActive
                               ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-500/10"
                               : "text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:text-white dark:hover:bg-neutral-800/70"
                           }`}
                         >
                           {item.name}
-
                           {isActive && (
                             <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400" />
                           )}
-                        </Link>
+                        </button>
                       </motion.div>
                     );
                   })}
