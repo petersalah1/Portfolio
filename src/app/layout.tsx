@@ -16,13 +16,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Peter Salah - React / Next.js Front-End Developer",
+  title: "Peter Salah | React / Next.js Front-End Developer",
   description:
-    "Portfolio website of Peter Salah, a React and Next.js Front-End Developer building responsive, modern, and user-friendly web applications.",
+    "Peter Salah is a React and Next.js Front-End Developer building responsive, API-driven web applications with Tailwind CSS, React Query, Axios, authentication, e-commerce flows, checkout, online payment, and Arabic RTL layouts.",
+  keywords: [
+    "Peter Salah",
+    "React Developer",
+    "Next.js Developer",
+    "Front-End Developer",
+    "E-commerce Frontend",
+    "Tailwind CSS",
+    "React Query",
+    "Axios",
+    "REST APIs",
+    "Arabic RTL",
+  ],
   icons: {
-    icon: [
-      { url: "/logo.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
     shortcut: "/logo.svg",
     apple: "/logo.svg",
   },
@@ -47,9 +57,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex-grow flex flex-col">
-            {children}
-          </main>
+          <main className="flex-grow flex flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

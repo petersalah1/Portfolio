@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/petersalah",
+    href: "https://www.linkedin.com/in/petersalah/",
     icon: ExternalLink,
   },
 ];
@@ -90,7 +90,7 @@ export function Contact() {
           className="text-center text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-14"
         >
           Open to freelance projects, internships, and junior front-end roles.
-          I&apos;d love to hear about your idea — let&apos;s make it happen.
+          Have a project, opportunity, or idea? Send me a message and I&apos;ll get back to you.
         </motion.p>
 
         {/* Contact cards */}

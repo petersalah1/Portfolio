@@ -3,17 +3,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-500/5 dark:bg-blue-500/10 blur-3xl rounded-full pointer-events-none" />
       <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-400/10 blur-3xl rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto w-full flex flex-col-reverse lg:flex-row items-center justify-between gap-14 lg:gap-10 relative z-10 py-24 lg:py-10">
-        {/* Text Content */}
         <div className="flex-1 text-center lg:text-left">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -30,7 +28,7 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-neutral-900 dark:text-white mb-6 leading-tight">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-blue-600 dark:text-blue-500">
                 Peter Salah
               </span>
@@ -47,8 +45,9 @@ export function Hero() {
             </p>
 
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              I build responsive, modern, and user-friendly web applications
-              using React.js, Next.js, JavaScript, Tailwind CSS, and REST APIs.
+              I build responsive, API-driven web apps with React, Next.js,
+              Tailwind CSS, React Query, Axios, authentication, checkout flows,
+              and Arabic RTL interfaces.
             </p>
           </motion.div>
 
@@ -83,7 +82,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Image Content */}
         <motion.div
           className="flex-1 flex justify-center lg:justify-end w-full max-w-[280px] sm:max-w-[360px] lg:max-w-none"
           initial={{ opacity: 0, scale: 0.85, rotate: -4 }}
@@ -96,8 +94,8 @@ export function Hero() {
           }}
         >
           <div className="relative w-full aspect-square max-w-[430px]">
-            <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-tr from-blue-600 to-cyan-400 rotate-6 opacity-25 dark:opacity-35 blur-2xl transition-transform hover:rotate-12 duration-700"></div>
-            <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-tr from-blue-600 to-cyan-400 -rotate-3 transition-transform hover:-rotate-6 duration-700 shadow-xl"></div>
+            <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-tr from-blue-600 to-cyan-400 rotate-6 opacity-25 dark:opacity-35 blur-2xl transition-transform hover:rotate-12 duration-700" />
+            <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-tr from-blue-600 to-cyan-400 -rotate-3 transition-transform hover:-rotate-6 duration-700 shadow-xl" />
 
             <div className="absolute inset-[5px] rounded-[2.7rem] bg-white dark:bg-neutral-900 overflow-hidden z-10">
               <Image

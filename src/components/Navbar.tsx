@@ -6,9 +6,9 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { name: "Experience", id: "experience" },
-  { name: "Skills", id: "skills" },
   { name: "Projects", id: "projects" },
+  { name: "Skills", id: "skills" },
+  { name: "Experience", id: "experience" },
   { name: "Contact", id: "contact" },
 ];
 
