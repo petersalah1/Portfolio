@@ -19,7 +19,7 @@ const projects = [
   {
     title: 'Ahmed Megaly Educational Platform',
     description: 'A modern Arabic RTL educational platform with courses, lessons, exams, revisions, protected video pages, store, cart, checkout, Google login, and backend API integration.',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fahmedmegaly.sck.guru%2F&screenshot=true&meta=false&embed=screenshot.url',
+    image: "/images/mega.png",
     fallbackGradient: 'from-indigo-700 to-blue-500',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'React Query', 'Axios', 'RTL', 'Google Login', 'Protected Routes'],
     demoLink: 'https://ahmedmegaly.sck.guru/',
