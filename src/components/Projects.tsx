@@ -9,7 +9,8 @@ const projects = [
   {
     title: 'NextShop E-commerce Platform',
     description: 'A full e-commerce web application built with Next.js, React, Tailwind CSS, React Query, Axios, and Context API. Includes authentication, product browsing, cart management, checkout, online payment, and user orders.',
-    image: 'https://api.microlink.io/?url=https%3A%2F%2Fnext-shop-kappa-wine.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url',
+        image:
+      "https://api.microlink.io/?url=https%3A%2F%2Fnext-shop21.vercel.app%2F&screenshot=true&meta=false&embed=screenshot.url",
     fallbackGradient: 'from-blue-600 to-cyan-400',
     tags: ['Next.js', 'React', 'Tailwind CSS', 'React Query', 'Axios', 'Context API', 'Auth', 'Checkout', 'Payment', 'Orders'],
     demoLink: 'https://next-shop21.vercel.app/',
