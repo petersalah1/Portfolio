@@ -34,7 +34,6 @@ export function Hero() {
           >
             {/* Top Badge: Electric Indigo */}
             <div className="inline-flex items-center gap-2 self-start bg-indigo-950/80 text-indigo-300 font-bold text-xs sm:text-sm px-3.5 py-1.5 border border-indigo-700/60 shadow-[2px_2px_0px_0px_#6366f1] uppercase tracking-wider mb-4 sm:mb-6">
-              <span className="h-2 w-2 rounded-full bg-indigo-400 animate-pulse" />
               <span>Available for Work · Cairo, Egypt</span>
             </div>
 
