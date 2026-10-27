@@ -1,227 +1,133 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Mail,
-  MessageCircle,
-  ArrowUpRight,
-  GitFork,
-  ExternalLink,
-  Sparkles,
-} from "lucide-react";
-
-const socialLinks = [
-  {
-    label: "GitHub",
-    href: "https://github.com/petersalah1",
-    icon: GitFork,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/petersalah/",
-    icon: ExternalLink,
-  },
-];
+import { Mail, MessageCircle, ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const contactMethods = [
   {
-    id: "email",
-    label: "Send an Email",
-    sublabel: "petersalah104@gmail.com",
+    title: "Email",
+    value: "petersalah104@gmail.com",
     href: "mailto:petersalah104@gmail.com",
+    actionText: "Send Email",
     icon: Mail,
     primary: true,
   },
   {
-    id: "whatsapp",
-    label: "Chat on WhatsApp",
-    sublabel: "+20 120 499 5735",
+    title: "WhatsApp",
+    value: "+20 120 499 5735",
     href: "https://wa.me/201204995735",
+    actionText: "Chat on WhatsApp",
     icon: MessageCircle,
     primary: false,
-    external: true,
+  },
+  {
+    title: "LinkedIn",
+    value: "linkedin.com/in/petersalah",
+    href: "https://www.linkedin.com/in/petersalah/",
+    actionText: "Connect on LinkedIn",
+    icon: FaLinkedin,
+    primary: false,
+  },
+  {
+    title: "GitHub",
+    value: "github.com/petersalah1",
+    href: "https://github.com/petersalah1",
+    actionText: "Explore Repositories",
+    icon: FaGithub,
+    primary: false,
   },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background ambient glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-500/5 dark:bg-blue-500/8 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-violet-500/4 dark:bg-violet-500/6 blur-[100px] rounded-full" />
-      </div>
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        {/* Section label */}
+    <section id="contact" className="py-16 lg:py-24 relative">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* ── Main Container (Neo-Brutalist 3D Box) ── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center mb-6"
+          className="bg-[#121215] border-2 border-neutral-700/80 p-6 sm:p-10 lg:p-14 shadow-[4px_4px_0px_0px_#6366f1] sm:shadow-[5px_5px_0px_0px_#6366f1]"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">
-            <Sparkles size={12} />
-            Get in Touch
-          </span>
-        </motion.div>
+          {/* Header */}
+          <div className="max-w-2xl mb-8 sm:mb-10">
+            <div className="inline-block bg-indigo-600 text-white font-black text-xs sm:text-sm px-3.5 py-1.5 border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff] uppercase tracking-wider mb-3 sm:mb-4">
+              Get in Touch // Let&apos;s Build
+            </div>
+            
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-3">
+              Have an idea or a project in mind?
+            </h2>
+            
+            <p className="text-xs sm:text-base text-neutral-300 leading-relaxed">
+              I&apos;m currently available for freelance projects, internships, and junior front-end developer roles. Let&apos;s discuss how we can create something exceptional together.
+            </p>
+          </div>
 
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.05 }}
-          className="text-center text-5xl md:text-6xl font-bold tracking-tight text-neutral-900 dark:text-white mb-5"
-        >
-          Let&apos;s Build{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400">
-            Something Great
-          </span>
-        </motion.h2>
-
-        {/* Sub-heading */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, delay: 0.1 }}
-          className="text-center text-lg md:text-xl text-neutral-500 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed mb-14"
-        >
-          Open to freelance projects, internships, and junior front-end roles.
-          Have a project, opportunity, or idea? Send me a message and I&apos;ll get back to you.
-        </motion.p>
-
-        {/* Contact cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
-          {contactMethods.map((method, i) => {
-            const Icon = method.icon;
-            return (
-              <motion.a
-                key={method.id}
-                href={method.href}
-                target={method.external ? "_blank" : undefined}
-                rel={method.external ? "noopener noreferrer" : undefined}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-                whileHover={{ y: -4, scale: 1.01 }}
-                className={`group relative flex items-center gap-5 p-6 rounded-3xl border transition-all duration-300 overflow-hidden ${
-                  method.primary
-                    ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 border-transparent text-white shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40"
-                    : "bg-white dark:bg-[#0B1220] border-neutral-200 dark:border-neutral-800 hover:border-blue-400 dark:hover:border-blue-500 text-neutral-800 dark:text-neutral-200 shadow-sm hover:shadow-md"
-                }`}
-              >
-                {/* Shine effect on primary */}
-                {method.primary && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                )}
-
-                <div
-                  className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+          {/* Contact Methods Grid */}
+          <div className="grid gap-4 sm:gap-6 sm:grid-cols-2 mb-8">
+            {contactMethods.map((method) => {
+              const Icon = method.icon;
+              return (
+                <a
+                  key={method.title}
+                  href={method.href}
+                  target={method.href.startsWith("http") ? "_blank" : undefined}
+                  rel={method.href.startsWith("http") ? "noreferrer" : undefined}
+                  className={`flex items-center justify-between p-4 sm:p-5 border-2 transition-all duration-200 group ${
                     method.primary
-                      ? "bg-white/15 group-hover:bg-white/20"
-                      : "bg-neutral-100 dark:bg-neutral-800 group-hover:bg-blue-50 dark:group-hover:bg-blue-500/10"
+                      ? "bg-indigo-600 text-white border-black shadow-[3px_3px_0px_0px_#ffffff] sm:shadow-[4px_4px_0px_0px_#ffffff] hover:-translate-x-0.5 hover:-translate-y-0.5"
+                      : "bg-[#18181b] text-white border-neutral-700 shadow-[3px_3px_0px_0px_#6366f1] sm:shadow-[4px_4px_0px_0px_#6366f1] hover:border-neutral-300 hover:-translate-x-0.5 hover:-translate-y-0.5"
                   }`}
                 >
-                  <Icon
-                    size={26}
-                    className={
-                      method.primary
-                        ? "text-white"
-                        : "text-neutral-600 dark:text-neutral-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
-                    }
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div
+                      className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center border-2 ${
+                        method.primary
+                          ? "bg-black text-indigo-400 border-black"
+                          : "bg-[#09090b] text-white border-neutral-700 group-hover:border-indigo-400 group-hover:text-indigo-400"
+                      }`}
+                    >
+                      <Icon size={20} />
+                    </div>
+
+                    <div>
+                      <div
+                        className={`text-[0.65rem] sm:text-xs font-black uppercase tracking-wider ${
+                          method.primary ? "text-indigo-200" : "text-neutral-400"
+                        }`}
+                      >
+                        {method.title}
+                      </div>
+                      <div className="text-xs sm:text-base lg:text-lg font-black tracking-tight text-white">
+                        {method.value}
+                      </div>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight
+                    size={20}
+                    className={`transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 ${
+                      method.primary ? "text-white" : "text-neutral-400 group-hover:text-white"
+                    }`}
                   />
-                </div>
+                </a>
+              );
+            })}
+          </div>
 
-                <div className="flex-1 text-left">
-                  <p
-                    className={`text-base font-semibold mb-0.5 ${
-                      method.primary
-                        ? "text-white"
-                        : "text-neutral-900 dark:text-white"
-                    }`}
-                  >
-                    {method.label}
-                  </p>
-                  <p
-                    className={`text-sm ${
-                      method.primary
-                        ? "text-blue-100/80"
-                        : "text-neutral-500 dark:text-neutral-400"
-                    }`}
-                  >
-                    {method.sublabel}
-                  </p>
-                </div>
+          {/* Availability Status Footnote */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 sm:pt-5 border-t border-neutral-800 text-xs sm:text-sm text-neutral-400 font-semibold">
+            <div className="flex items-center gap-2">
+              <span className="text-white">Active status: Open to immediate opportunities</span>
+            </div>
 
-                <ArrowUpRight
-                  size={20}
-                  className={`shrink-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
-                    method.primary
-                      ? "text-white/70 group-hover:text-white"
-                      : "text-neutral-400 dark:text-neutral-600 group-hover:text-blue-500 dark:group-hover:text-blue-400"
-                  }`}
-                />
-              </motion.a>
-            );
-          })}
-        </div>
-
-        {/* Divider */}
-        <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          whileInView={{ opacity: 1, scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center gap-4 mb-10"
-        >
-          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800" />
-          <span className="text-xs font-medium tracking-widest uppercase text-neutral-400 dark:text-neutral-600">
-            or find me on
-          </span>
-          <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-800" />
+            <div>Quick response time (within 24 hours)</div>
+          </div>
         </motion.div>
-
-        {/* Social links */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="flex justify-center gap-4"
-        >
-          {socialLinks.map((s) => {
-            const Icon = s.icon;
-            return (
-              <motion.a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-white dark:bg-[#0B1220] border border-neutral-200 dark:border-neutral-800 hover:border-blue-400 dark:hover:border-blue-500 text-neutral-600 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm font-medium shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <Icon size={18} />
-                {s.label}
-              </motion.a>
-            );
-          })}
-        </motion.div>
-
-        {/* Footer note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          className="text-center mt-10 text-sm text-neutral-400 dark:text-neutral-600"
-        >
-          Usually responds within a few hours ⚡
-        </motion.p>
       </div>
     </section>
   );

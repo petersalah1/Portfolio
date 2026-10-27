@@ -1,93 +1,101 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const experiences = [
   {
     role: "Freelance Front-End Developer",
-    company: "Freelance / Client Projects",
-    period: "2025 - Present",
-    points: [
-      "Built responsive websites and web applications using React, Next.js, JavaScript, Tailwind CSS, Bootstrap, and REST APIs.",
-      "Worked on educational platforms, e-commerce interfaces, landing pages, authentication flows, dynamic routes, and Arabic RTL layouts.",
-      "Integrated front-end applications with backend APIs using Axios, React Query, reusable components, and organized service layers.",
+    company: "Freelance / Client Engagements",
+    period: "2025 — Present",
+    highlights: [
+      "Designed and developed full-stack responsive web applications using React, Next.js, TypeScript, Tailwind CSS, and REST APIs for real-world clients.",
+      "Engineered comprehensive e-commerce flows (catalog, dynamic filtering, persistent cart, checkout, and online payment integrations).",
+      "Built multi-tier educational and LMS platforms featuring Arabic RTL interfaces, protected video pages, quizzes, and Google authentication.",
+      "Implemented clean client architecture with TanStack React Query, Axios interceptors, reusable UI libraries, and organized service layers.",
     ],
   },
   {
-    role: "Front-End Learning & Practice",
-    company: "Personal Projects",
+    role: "Front-End Practice & Specialized Building",
+    company: "Production Projects & Open Source",
     period: "2025",
-    points: [
-      "Focused on building real-world projects with Next.js App Router, React.js, REST API integration, and responsive design.",
-      "Practiced cleaner project structure using reusable components, custom hooks, Context API, and LocalStorage.",
+    highlights: [
+      "Mastered Next.js App Router patterns, server-side rendering, client component boundaries, and performance optimization.",
+      "Structured reusable design systems with Tailwind CSS, custom hooks, and Context API for zero-lag state propagation.",
+      "Built production-ready portfolio case studies adhering to accessibility, mobile-first design, and clean code principles.",
     ],
   },
 ];
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-neutral-50/70 dark:bg-[#050B14]">
-      <div className="max-w-5xl mx-auto">
+    <section id="experience" className="py-16 lg:py-24 relative">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-10 sm:mb-14 text-center sm:text-left"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20 mb-5">
-            <Briefcase size={13} />
-            Experience
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
-            Practical Front-End Experience
+          <div className="inline-block bg-indigo-600 text-white font-black text-xs sm:text-sm px-3.5 py-1.5 border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff] uppercase tracking-wider mb-3 sm:mb-4">
+            Career Timeline // Practical Experience
+          </div>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-3">
+            Work &amp; Experience
           </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full" />
+          <p className="text-xs sm:text-base lg:text-lg text-neutral-300 max-w-2xl leading-relaxed">
+            Hands-on front-end development delivering high-impact, bug-free applications for clients and production environments.
+          </p>
         </motion.div>
 
-        <div className="space-y-8 relative">
-          <div className="absolute left-[31px] md:left-[25%] top-0 bottom-0 w-px bg-neutral-200 dark:bg-neutral-800 hidden md:block" />
+        {/* ── Experience Cards ── */}
+        <div className="space-y-6 sm:space-y-8">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.role}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              className="bg-[#121215] border-2 border-neutral-700/80 hover:border-neutral-300 p-5 sm:p-8 lg:p-10 shadow-[4px_4px_0px_0px_#6366f1] sm:shadow-[5px_5px_0px_0px_#6366f1] hover:shadow-[7px_7px_0px_0px_#818cf8] transition-all duration-300"
             >
-              <div className="md:grid md:grid-cols-4 md:gap-8 items-start">
-                <div className="hidden md:block col-span-1 text-right mt-1 pr-8">
-                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-500">
-                    {exp.period}
-                  </div>
-                </div>
-                <div className="md:hidden mb-4 text-sm font-semibold text-blue-600 dark:text-blue-500 flex items-center">
-                  <Calendar size={16} className="mr-2" />
-                  {exp.period}
-                </div>
-                <div className="col-span-3 bg-white dark:bg-[#020617] p-8 rounded-3xl border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-shadow relative">
-                  <div className="absolute top-8 -left-[41px] w-5 h-5 bg-blue-100 dark:bg-blue-900/30 rounded-full border-4 border-white dark:border-[#050B14] hidden md:block z-10 box-content" />
-                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-1">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-neutral-800">
+                <div>
+                  <h3 className="text-lg sm:text-2xl font-black text-white tracking-tight mb-1">
                     {exp.role}
                   </h3>
-                  <h4 className="text-lg font-medium text-neutral-600 dark:text-neutral-400 mb-5">
+                  <div className="text-xs sm:text-base font-bold text-neutral-400">
                     {exp.company}
-                  </h4>
-                  <ul className="space-y-3">
-                    {exp.points.map((point) => (
-                      <li key={point} className="flex gap-3 text-neutral-600 dark:text-neutral-400 leading-relaxed text-base md:text-lg">
-                        <CheckCircle2 size={19} className="mt-1 shrink-0 text-blue-600 dark:text-blue-400" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  </div>
+                </div>
+
+                <div className="self-start sm:self-auto bg-indigo-600 text-white font-black text-xs sm:text-sm px-3.5 py-1 border border-black shadow-[2px_2px_0px_0px_#ffffff]">
+                  {exp.period}
                 </div>
               </div>
+
+              {/* Highlights */}
+              <ul className="space-y-2.5 sm:space-y-3">
+                {exp.highlights.map((item, idx) => (
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2.5 sm:gap-3 text-xs sm:text-base text-neutral-300 leading-relaxed"
+                  >
+                    <CheckCircle2
+                      size={16}
+                      className="text-indigo-400 shrink-0 mt-0.5"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

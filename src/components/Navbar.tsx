@@ -3,38 +3,34 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { name: "Home", id: "home" },
-  // { name: "About", id: "about" },
   { name: "Projects", id: "projects" },
-  { name: "Skills", id: "skills" }, 
+  { name: "Skills", id: "skills" },
   { name: "Experience", id: "experience" },
   { name: "Contact", id: "contact" },
 ];
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
-      const scrollPosition = window.scrollY + 160;
+      setIsScrolled(window.scrollY > 20);
+      const scrollPosition = window.scrollY + 140;
       let currentSection = "home";
-
       navLinks.forEach((link) => {
         const section = document.getElementById(link.id);
         if (!section) return;
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if (
+          scrollPosition >= section.offsetTop &&
+          scrollPosition < section.offsetTop + section.offsetHeight
+        ) {
           currentSection = link.id;
         }
       });
-
       setActiveSection(currentSection);
     };
 
@@ -44,44 +40,45 @@ export function Navbar() {
   }, []);
 
   function scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     setIsMobileMenuOpen(false);
   }
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full px-4 pt-4 sm:px-6 lg:px-8">
-      <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-3xl border px-4 transition-all duration-300 sm:px-5 ${
-          isScrolled
-            ? "border-slate-200/80 bg-white/85 py-3 shadow-lg shadow-slate-950/5 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/75"
-            : "border-transparent bg-transparent py-4"
-        }`}
-      >
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
+        isScrolled
+          ? "bg-[#0a0a0c]/95 backdrop-blur-md border-b-2 border-neutral-800 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+          : "bg-[#0a0a0c] border-b-2 border-neutral-800"
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* ── Logo with Neo-Brutalist 3D Box ── */}
         <button
           onClick={() => scrollToSection("home")}
-          className="flex items-center gap-3 text-left"
+          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group"
           aria-label="Go to home"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-lg font-black text-white shadow-lg shadow-blue-600/25">
-            P
+          <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center bg-indigo-600 text-white text-xs sm:text-sm font-black border-2 border-black shadow-[2px_2px_0px_0px_#ffffff] sm:shadow-[2.5px_2.5px_0px_0px_#ffffff] group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all">
+            PS
           </span>
-          <span className="hidden text-base font-black tracking-tight text-slate-950 dark:text-white sm:block">
+          <span className="text-base sm:text-lg font-black tracking-tight text-white group-hover:text-indigo-400 transition-colors">
             Peter Salah
           </span>
         </button>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        {/* ── Desktop Navigation ── */}
+        <nav className="hidden items-center gap-2 md:flex">
           {navLinks.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition cursor-pointer ${
+                className={`cursor-pointer px-4 py-1.5 text-sm font-bold uppercase tracking-wide transition-all ${
                   isActive
-                    ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
-                    : "text-slate-600 hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                    ? "bg-indigo-600 text-white border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff]"
+                    : "text-neutral-300 hover:text-white hover:bg-neutral-800/60"
                 }`}
               >
                 {item.name}
@@ -90,34 +87,46 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        {/* ── Desktop CTA (Download CV) ── */}
+        <div className="hidden items-center gap-4 md:flex">
           <a
             href="/Peter_Salah_Frontend.pdf"
             download
-            className="inline-flex items-center rounded-2xl border border-blue-500/25 px-4 py-2 text-sm font-bold text-blue-600 transition hover:bg-blue-500/10 dark:text-blue-300"
+            className="neo-btn-primary px-4 py-2 text-xs uppercase tracking-wider font-black"
           >
             Download CV
-            <Download className="ml-2" size={16} />
+            <Download size={14} className="stroke-[2.5]" />
           </a>
-          <ThemeToggle />
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
-          <ThemeToggle />
+        {/* ── Mobile Menu Toggle ── */}
+        <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className="flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white/80 text-slate-700 shadow-sm backdrop-blur transition dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+            className="flex h-10 w-10 items-center justify-center bg-[#18181b] border-2 border-neutral-700 text-white shadow-[2px_2px_0px_0px_#6366f1] active:translate-y-0.5"
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
             <AnimatePresence mode="wait" initial={false}>
               {isMobileMenuOpen ? (
-                <motion.span key="close" initial={{ opacity: 0, rotate: -90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: 90 }} transition={{ duration: 0.18 }}>
-                  <X size={22} />
+                <motion.span
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <X size={20} />
                 </motion.span>
               ) : (
-                <motion.span key="menu" initial={{ opacity: 0, rotate: 90 }} animate={{ opacity: 1, rotate: 0 }} exit={{ opacity: 0, rotate: -90 }} transition={{ duration: 0.18 }}>
-                  <Menu size={22} />
+                <motion.span
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <Menu size={20} />
                 </motion.span>
               )}
             </AnimatePresence>
@@ -125,38 +134,38 @@ export function Navbar() {
         </div>
       </div>
 
+      {/* ── Mobile Menu Dropdown ── */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -12, scale: 0.98 }}
-            transition={{ duration: 0.22 }}
-            className="mx-auto mt-3 max-w-7xl overflow-hidden rounded-3xl border border-slate-200 bg-white/95 p-3 shadow-xl shadow-slate-950/10 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 lg:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="border-b-2 border-neutral-800 bg-[#0a0a0c] px-4 pb-6 pt-3 md:hidden overflow-hidden"
           >
-            <div className="grid gap-1">
+            <div className="flex flex-col gap-2">
               {navLinks.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`rounded-2xl px-4 py-3 text-left text-sm font-bold transition ${
+                  className={`cursor-pointer py-3 px-4 text-left text-sm font-bold uppercase tracking-wider border-2 ${
                     activeSection === item.id
-                      ? "bg-blue-600 text-white"
-                      : "text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
+                      ? "bg-indigo-600 text-white border-black shadow-[2px_2px_0px_0px_#ffffff]"
+                      : "border-transparent text-neutral-300 hover:bg-neutral-800/80"
                   }`}
                 >
                   {item.name}
                 </button>
               ))}
+              <a
+                href="/Peter_Salah_Frontend.pdf"
+                download
+                className="neo-btn-primary mt-2 py-3 text-center text-sm font-black uppercase tracking-wider"
+              >
+                Download CV <Download size={16} />
+              </a>
             </div>
-            <a
-              href="/Peter_Salah_Frontend.pdf"
-              download
-              className="mt-3 flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-3 text-sm font-bold text-white"
-            >
-              Download CV
-              <Download className="ml-2" size={16} />
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

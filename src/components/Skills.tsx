@@ -1,119 +1,175 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Database, LayoutDashboard, Rocket, Wrench, GraduationCap } from "lucide-react";
+import { Code2, Database, Layout, Wrench, Rocket } from "lucide-react";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiHtml5,
+  SiGithub,
+  SiVercel,
+  SiRedux,
+  SiBootstrap,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 
-const skillGroups = [
+const skillCategories = [
   {
     title: "Frontend Core",
     icon: Code2,
-    skills: ["HTML5", "CSS3", "JavaScript ES6+", "React.js", "Next.js App Router", "Tailwind CSS", "Bootstrap"],
+    skills: [
+      { name: "React.js", icon: SiReact, featured: true },
+      { name: "Next.js", icon: SiNextdotjs, featured: true },
+      { name: "TypeScript", icon: SiTypescript, featured: true },
+      { name: "JavaScript ES6+", icon: SiJavascript },
+      { name: "Tailwind CSS", icon: SiTailwindcss, featured: true },
+      { name: "HTML5", icon: SiHtml5 },
+      { name: "CSS3" },
+      { name: "Bootstrap", icon: SiBootstrap },
+    ],
   },
   {
-    title: "API & State",
+    title: "Data Fetching & State",
     icon: Database,
-    skills: ["REST APIs", "Axios", "TanStack React Query", "Context API", "LocalStorage", "FormData"],
+    skills: [
+      { name: "TanStack React Query", featured: true },
+      { name: "Axios", featured: true },
+      { name: "REST APIs", icon: TbApi, featured: true },
+      { name: "Context API" },
+      { name: "Redux Toolkit", icon: SiRedux },
+      { name: "LocalStorage & Cache" },
+    ],
   },
   {
-    title: "UI & Product Work",
-    icon: LayoutDashboard,
-    skills: ["Responsive Design", "Arabic RTL Layouts", "E-commerce UI", "Authentication UI", "Checkout Flow", "Dashboard UI", "Figma to Code"],
+    title: "Product & UI Engineering",
+    icon: Layout,
+    skills: [
+      { name: "Arabic RTL Layouts", featured: true },
+      { name: "Responsive Design", featured: true },
+      { name: "E-commerce & Cart" },
+      { name: "Auth & Protected Routes" },
+      { name: "Payment & Checkout UI" },
+      { name: "Dashboard Interfaces" },
+    ],
   },
   {
-    title: "Tools & Deployment",
+    title: "Tools & Workflow",
     icon: Wrench,
-    skills: ["Git", "GitHub", "VS Code", "npm", "Vercel", "Framer Motion", "Lucide Icons"],
+    skills: [
+      { name: "Git & GitHub", icon: SiGithub },
+      { name: "Vercel Deployment", icon: SiVercel },
+      { name: "VS Code" },
+      { name: "Framer Motion" },
+      { name: "npm / pnpm" },
+      { name: "Figma to Code" },
+    ],
   },
 ];
 
-const learningSkills = ["TypeScript", "Redux Toolkit"];
-
 export function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-16 lg:py-24 relative">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-10 sm:mb-14 text-center sm:text-left"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4">
-            Technical Skills
+          <div className="inline-block bg-indigo-600 text-white font-black text-xs sm:text-sm px-3.5 py-1.5 border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff] uppercase tracking-wider mb-3 sm:mb-4">
+            Technical Stack // Core Competencies
+          </div>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-3">
+            Skills &amp; Technologies
           </h2>
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full mb-6" />
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-            A focused stack for building responsive interfaces, connecting APIs, managing client-side state, and shipping production-ready front-end projects.
+          <p className="text-xs sm:text-base lg:text-lg text-neutral-300 max-w-2xl leading-relaxed">
+            A production-ready skillset for building fast, robust, and accessible front-end web applications.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillGroups.map((group, index) => {
-            const Icon = group.icon;
+        {/* ── Categories Grid ── */}
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
+          {skillCategories.map((cat, idx) => {
+            const Icon = cat.icon;
             return (
               <motion.div
-                key={group.title}
-                initial={{ opacity: 0, y: 24 }}
+                key={cat.title}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="bg-white dark:bg-[#020617] rounded-3xl border border-neutral-200 dark:border-neutral-800 p-7 shadow-sm hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="bg-[#121215] border-2 border-neutral-700/80 p-5 sm:p-7 shadow-[4px_4px_0px_0px_#6366f1] sm:shadow-[5px_5px_0px_0px_#6366f1] hover:border-neutral-300 transition-colors"
               >
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-5">
-                  <Icon size={26} />
+                {/* Header */}
+                <div className="flex items-center gap-3 pb-4 mb-5 border-b border-neutral-800">
+                  <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center bg-indigo-600 text-white border-2 border-black shadow-[2px_2px_0px_0px_#ffffff]">
+                    <Icon size={18} className="stroke-[2.5]" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">
+                    {cat.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-5">
-                  {group.title}
-                </h3>
+
+                {/* Skill Pills */}
                 <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/70 text-neutral-700 dark:text-neutral-300 text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {cat.skills.map((skill) => {
+                    const SkillIcon = skill.icon;
+                    return (
+                      <div
+                        key={skill.name}
+                        className={`inline-flex items-center gap-2 px-3 py-1.5 text-xs sm:text-sm font-bold border transition-all duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 ${
+                          skill.featured
+                            ? "bg-[#18181b] text-white border-neutral-600 shadow-[2px_2px_0px_0px_#6366f1] hover:border-indigo-400"
+                            : "bg-[#09090b] text-neutral-300 border-neutral-800 shadow-[1px_1px_0px_0px_#000000] hover:border-neutral-500 hover:text-white"
+                        }`}
+                      >
+                        {SkillIcon && <SkillIcon size={14} className={skill.featured ? "text-indigo-400" : "text-neutral-400"} />}
+                        <span>{skill.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </motion.div>
             );
           })}
         </div>
 
+        {/* ── Learning & Growth Banner ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mt-10 bg-neutral-50 dark:bg-[#050B14] border border-neutral-200 dark:border-neutral-800 rounded-3xl p-7 flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+          className="mt-6 sm:mt-8 bg-[#18181b] border-2 border-neutral-700 p-5 sm:p-7 shadow-[3px_3px_0px_0px_#ffffff] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
         >
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-blue-600 dark:bg-blue-500 text-white flex items-center justify-center shrink-0">
-              <GraduationCap size={24} />
+          <div className="flex items-center gap-3.5">
+            <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center bg-indigo-600 text-white border-2 border-black shrink-0">
+              <Rocket size={20} className="stroke-[2.5]" />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-1">
-                Currently Leveling Up
-              </h3>
-              <p className="text-neutral-600 dark:text-neutral-400">
-                Practicing these technologies to use them confidently in larger projects.
-              </p>
+              <div className="text-sm sm:text-base font-black text-white">Continuous Growth & Practice</div>
+              <div className="text-xs sm:text-sm text-neutral-400">
+                Constantly expanding skills in TypeScript design patterns, Next.js server actions, and full-stack API architectures.
+              </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            {learningSkills.map((skill) => (
-              <span
-                key={skill}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-[#020617] border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 font-semibold"
-              >
-                <Rocket size={16} className="text-blue-600 dark:text-blue-400" />
-                {skill}
-              </span>
-            ))}
+          <div className="flex gap-2 self-start sm:self-auto">
+            <span className="bg-indigo-600 text-white font-black text-xs px-3 py-1 border border-black shadow-[2px_2px_0px_0px_#000000]">
+              TypeScript Pro
+            </span>
+            <span className="bg-indigo-600 text-white font-black text-xs px-3 py-1 border border-black shadow-[2px_2px_0px_0px_#000000]">
+              Next.js 15+
+            </span>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

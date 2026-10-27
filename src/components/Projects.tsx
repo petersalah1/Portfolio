@@ -1,161 +1,138 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
-import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 
 const projects = [
   {
-    title: 'NextShop E-commerce Platform',
+    num: "01",
+    title: "NextShop E-commerce",
     description:
-      'A full e-commerce web application built with Next.js, React, Tailwind CSS, React Query, Axios, and Context API. Includes authentication, product browsing, cart management, checkout, online payment, and user orders.',
-    image: '/images/nextshop.webp',
-    fallbackGradient: 'from-blue-600 to-cyan-400',
-    tags: [
-      'Next.js',
-      'React',
-      'Tailwind CSS',
-      'React Query',
-      'Axios',
-      'Context API',
-      'Auth',
-      'Checkout',
-      'Payment',
-      'Orders',
-    ],
-    demoLink: 'https://next-shop21.vercel.app/',
-    githubLink: 'https://github.com/petersalah1/nextShop',
+      "Full-featured e-commerce platform with live cart, online payments, user authentication, and order tracking.",
+    image: "/images/nextshop.webp",
+    tags: ["Next.js", "React Query", "Tailwind CSS", "Axios", "Payment"],
+    demoLink: "https://next-shop21.vercel.app/",
+    githubLink: "https://github.com/petersalah1/nextShop",
   },
   {
-    title: 'Ahmed Megaly Educational Platform',
+    num: "02",
+    title: "Ahmed Megaly Platform",
     description:
-      'A modern Arabic RTL educational platform with courses, lessons, exams, revisions, protected video pages, store, cart, checkout, Google login, and backend API integration.',
-    image: '/images/mega.webp',
-    fallbackGradient: 'from-indigo-700 to-blue-500',
-    tags: [
-      'Next.js',
-      'React',
-      'Tailwind CSS',
-      'React Query',
-      'Axios',
-      'RTL',
-      'Google Login',
-      'Protected Routes',
-    ],
-    demoLink: 'https://ahmedmegaly.sck.guru/',
-    githubLink: '',
+      "Modern Arabic RTL educational platform with courses, protected video streaming, exams, and Google login.",
+    image: "/images/mega.webp",
+    tags: ["Next.js", "React", "RTL Layout", "React Query", "Google Auth"],
+    demoLink: "https://ahmedmegaly.sck.guru/",
+    githubLink: "",
   },
   {
-    title: 'Nivirra Tourism Website',
+    num: "03",
+    title: "Nivirra Tourism",
     description:
-      'A responsive tourism website built with HTML, CSS, and Vanilla JavaScript, featuring trips, offers, traveler feedback, map section, and an interactive tailor-made tour request flow.',
-    image: '/images/nivirra.webp',
-    fallbackGradient: 'from-orange-500 to-yellow-400',
-    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-    demoLink:
-      'https://petersalah1.github.io/Nivirra/index.html',
-    githubLink: '',
+      "Responsive travel website featuring curated trips, customer reviews, and an interactive custom tour builder.",
+    image: "/images/nivirra.webp",
+    tags: ["HTML5", "Modern CSS", "JavaScript", "Responsive UI"],
+    demoLink: "https://petersalah1.github.io/Nivirra/index.html",
+    githubLink: "",
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Header */}
+    <section id="projects" className="py-16 lg:py-24 relative">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
+        {/* ── Section Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="mb-10 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-
-          <div className="w-20 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded-full mb-6" />
-
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
-            A selection of real and personal projects built with modern front-end technologies.
-          </p>
+          <div>
+            <div className="inline-block bg-indigo-600 text-white font-black text-xs px-3.5 py-1 border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff] uppercase tracking-wider mb-3">
+              Case Studies
+            </div>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">
+              Featured Projects
+            </h2>
+          </div>
+          
+          <a
+            href="https://github.com/petersalah1"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs sm:text-sm font-bold text-neutral-400 hover:text-indigo-400 underline underline-offset-4 transition-colors"
+          >
+            Explore all repositories on GitHub ↗
+          </a>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-
+        {/* ── Clean 3-Column Grid (Zero Clutter, Punchy Cards) ── */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
+            <motion.article
+              key={project.num}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group rounded-[2rem] overflow-hidden bg-white dark:bg-[#020617] border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 flex flex-col"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="bg-[#121215] border-2 border-neutral-700 hover:border-neutral-300 shadow-[4px_4px_0px_0px_#6366f1] sm:shadow-[5px_5px_0px_0px_#6366f1] hover:shadow-[7px_7px_0px_0px_#818cf8] transition-all duration-200 flex flex-col group overflow-hidden"
             >
-
-              {/* IMAGE SECTION (OPTIMIZED ONLY) */}
-              <div
-                className={`relative w-full h-72 bg-gradient-to-br ${project.fallbackGradient} overflow-hidden`}
-              >
+              {/* Image Preview with Frame */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-900 border-b-2 border-neutral-700">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={85}
                   priority={index === 0}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  quality={75}
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none" />
-
-                {/* Hover CTA */}
-                <div className="absolute inset-0 flex items-center justify-center translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="bg-white/90 dark:bg-neutral-900/90 text-neutral-900 dark:text-white text-sm font-semibold py-3 px-6 rounded-full backdrop-blur-md shadow-lg">
-                    View Project Details
-                  </span>
+                {/* Number Badge */}
+                <div className="absolute top-2.5 left-2.5 bg-indigo-600 text-white font-black text-xs px-2.5 py-0.5 border border-black shadow-[2px_2px_0px_0px_#ffffff]">
+                  {project.num}
                 </div>
               </div>
 
-              {/* CONTENT */}
-              <div className="p-8 md:p-10 flex-1 flex flex-col">
+              {/* Card Body */}
+              <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between gap-4">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-black text-white tracking-tight mb-2 group-hover:text-indigo-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed mb-4">
+                    {project.description}
+                  </p>
 
-                <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 dark:text-white mb-4">
-                  {project.title}
-                </h3>
-
-                <p className="text-neutral-600 dark:text-neutral-400 mb-8 text-lg leading-relaxed flex-1">
-                  {project.description}
-                </p>
-
-                {/* TAGS */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-1.5 bg-neutral-100 dark:bg-neutral-800/50 text-neutral-700 dark:text-neutral-300 text-sm rounded-full font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {/* Clean Tech Pills */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="bg-[#18181b] text-neutral-300 border border-neutral-700 px-2.5 py-0.5 text-[0.72rem] font-bold uppercase tracking-wider"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
-                {/* LINKS */}
-                <div className="flex items-center space-x-4 mt-auto">
-
+                {/* 3D Action Buttons */}
+                <div className="flex items-center gap-2.5 pt-2 border-t border-neutral-800">
                   <Link
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 inline-flex justify-center items-center py-4 px-6 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 rounded-2xl font-semibold hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
+                    className="neo-btn-primary flex-1 py-2.5 text-xs font-black uppercase tracking-wider"
                   >
-                    Live Demo
-                    <ExternalLink size={18} className="ml-2" />
+                    Live Demo <ExternalLink size={14} className="stroke-[2.5]" />
                   </Link>
 
                   {project.githubLink && (
@@ -163,19 +140,18 @@ export function Projects() {
                       href={project.githubLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-4 border border-neutral-200 dark:border-neutral-700 rounded-2xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
-                      aria-label={`${project.title} GitHub repository`}
+                      aria-label={`${project.title} GitHub`}
+                      className="neo-btn-secondary px-3.5 py-2.5 text-xs"
                     >
-                      <FaGithub size={24} />
+                      <FaGithub size={16} />
                     </Link>
                   )}
-
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
-
         </div>
+
       </div>
     </section>
   );
