@@ -2,19 +2,23 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Download, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const navLinks = [
-  { name: "Projects", id: "projects" },
-  { name: "Skills", id: "skills" },
-  { name: "Experience", id: "experience" },
-  { name: "Contact", id: "contact" },
+  { name: "المشاريع", id: "projects" },
+  { name: "الخدمات والخطوات", id: "services" },
+  { name: "التقنيات", id: "skills" },
+  { name: "تواصل معي", id: "contact" },
 ];
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const defaultMsg = encodeURIComponent("السلام عليكم يا بيتر، حابب استفسر عن مشروع منصة أو متجر إلكتروني.");
+  const whatsappUrl = `https://wa.me/201204995735?text=${defaultMsg}`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +79,7 @@ export function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`cursor-pointer px-4 py-1.5 text-sm font-bold uppercase tracking-wide transition-all ${
+                className={`cursor-pointer px-3.5 py-1.5 text-xs sm:text-sm font-bold uppercase tracking-wide transition-all ${
                   isActive
                     ? "bg-indigo-600 text-white border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff]"
                     : "text-neutral-300 hover:text-white hover:bg-neutral-800/60"
@@ -87,15 +91,17 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* ── Desktop CTA (Download CV) ── */}
+        {/* ── Desktop CTA (High-Converting WhatsApp / Start Project) ── */}
         <div className="hidden items-center gap-4 md:flex">
           <a
-            href="/Peter_Salah_Frontend.pdf"
-            download
-            className="neo-btn-primary px-4 py-2 text-xs uppercase tracking-wider font-black"
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="neo-btn-primary px-4 py-2 text-xs uppercase tracking-wider font-black bg-[#25D366] text-black hover:bg-[#20bd5a] border-2 border-black shadow-[2.5px_2.5px_0px_0px_#ffffff] flex items-center gap-1.5"
+            dir="rtl"
           >
-            Download CV
-            <Download size={14} className="stroke-[2.5]" />
+            <FaWhatsapp size={15} />
+            <span>ابدأ مشروعك</span>
           </a>
         </div>
 
@@ -159,11 +165,14 @@ export function Navbar() {
                 </button>
               ))}
               <a
-                href="/Peter_Salah_Frontend.pdf"
-                download
-                className="neo-btn-primary mt-2 py-3 text-center text-sm font-black uppercase tracking-wider"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="neo-btn-primary mt-2 py-3 text-center text-sm font-black uppercase tracking-wider bg-[#25D366] text-black border-2 border-black flex items-center justify-center gap-2"
+                dir="rtl"
               >
-                Download CV <Download size={16} />
+                <FaWhatsapp size={17} />
+                <span>ابدأ مشروعك على واتساب</span>
               </a>
             </div>
           </motion.div>
